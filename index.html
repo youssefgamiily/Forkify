@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Forkify</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <style></style>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="forkify">
+      <div class="navBar">
+        <img src="./src/img/logo.png" class="logo" />
+        <div class="searchBar">
+          <form class="searchForm">
+            <input
+              type="text"
+              id="recipe"
+              class="searchBarField"
+              placeholder="Search over 1,000,000 recipes..."
+            />
+            <button for="recipe" id="searchFormBtn">Search</button>
+          </form>
+          <div class="searchBtn"></div>
+        </div>
+        <div class="navBtns">
+          <div class="BtnContainer">
+            <div class="AddRecipeBtndiv">
+              <button class="navBtn" id="AddRecipeBtn">Add Recipe</button>
+            </div>
+            <div class="BookmarkBtnDiv">
+              <button class="navBtn" id="BookmarkRecipeBtn">Bookmarks</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal">
+        <logo class="modal_Logo"></logo>
+        <h3>No bookmarks yet. Find a nice recipe and bookmark it ;)</h3>
+      </div>
+      <div class="core">
+        <div class="sideBar">
+          <div class="recipes"></div>
+          <div class="moveBtns">
+            <button class="circ" id="PrevPageBtn">Previous Page</button>
+            <button class="circ" id="nextPageBtn">Next Page</button>
+          </div>
+        </div>
+
+        <div class="recipeWindow"></div>
+      </div>
+    </div>
+  </body>
+</html>
