@@ -29,7 +29,7 @@ let Dataa;
 function handleSearch() {
   if (recipes.innerHTML != "") recipes.innerHTML = "";
   data = [];
-  const req = retRequest(searchFormTxt.value);
+  const req = retRequest(searchFormTxt.value); // makes the API request to return the search value
   const promise = fetch(req)
     .then((res) => res.json())
     .then((Data) => {
@@ -39,12 +39,12 @@ function handleSearch() {
       if (data.length == 0) {
         data = Dataa.recipes;
       } else {
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) { // checks if the first 5 elements are already in data[], which would mean that the two arrays are probably the same
           if (data[i].id == Data.data.id) {
             count++;
           }
           if (count == 5) return;
-          else {
+          else { // if they're not the same, make Dataa.recipe = data
             data = Dataa.recipe;
           }
         }
@@ -110,15 +110,6 @@ searchBtn.addEventListener("click", (e) => {
     renderArr(newRenderedArr.arr[0]);
   }); // renders recipes in side bar
 });
-// searchBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   let promise = handleSearch(); // sends html request and updates data variable
-//   promise.then(() => {
-//     console.log(promise);
-//     divideData();
-//     renderArr(newRenderedArr.arr[0]);
-//   }); // renders recipes in side bar
-// });
 
 moveBtnsDiv.addEventListener("click", function (e) {
   console.log(e);
@@ -159,6 +150,7 @@ retListHTML = function (ingredients, Class) {
     if (Class == "ingridients dark" && index == Math.floor(arr.length / 2)) {
       html += "</ul> <ul>";
     }
+    console.log(elem)
 
     Class == "ingridients dark"
       ? (html += `<li>${elem.quantity != null ? elem.quantity : ""} ${
@@ -175,7 +167,10 @@ async function getAdditionalData(recipe_id) {
   // 1) fetches request  2)updates foundRecipe to be new requested recipe 3)creates ingredientsHTML  4)returns new recipe
   // okay.. what if this recipe was already fetched before ? then:
   // 1) fetch but keep clicked = 1.. foundrecipe = data.find(recipe => recipe.id == recipe_id)
-  let getFromBookmarks = bookmarks.find((recipe) => recipe.id == recipe_id);
+  let getFromBookmarks = bookmarks.find((recipe) => {
+    console.log("bookmarks: ", bookmarks, "recipe: ", recipe)
+    return recipe?.id == recipe_id;
+  });
   if (!getFromBookmarks) {
     console.log(`recipe_id is ${recipe_id}`);
     bookmarks;
